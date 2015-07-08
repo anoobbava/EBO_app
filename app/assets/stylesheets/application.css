@@ -35,12 +35,14 @@
 	text-align: center;
 	font-style: italic; 	
  }
- table.tb{
+ table.table_class_main{
+  color: black;
+  table-layout: center;
+ }
+ table.table_class_border{
+  
 
- 	
- 	color: black;
- 	
-}
+ }
  	
  	<style type="text/css">
 
@@ -57,5 +59,27 @@
   }
 
 </style>
- 
 
+
+*= require bootstrap-datepicker
+ # Or if using bootstrap v3:
+ *= require bootstrap-datepicker3
+
+table.one {
+    border-style: solid;
+    border-color: red;
+}
+
+
+.table_div{
+   width:920px;
+   padding:30px;
+   margin:40px auto;
+   background: #FFF;
+   border-radius: 10px;
+   -webkit-border-radius:10px;
+   -moz-border-radius: 10px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+   -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}

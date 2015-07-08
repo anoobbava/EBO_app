@@ -1,13 +1,13 @@
+ 
 
 <h2 class="main1">welcome to user registration page</h2>
 <%= form_for :user, url: :users do |f| %>
-   <% @user.errors.full_messages.each do |msg| %>
-    <% end %>
+   
     <div class="form-group">
     <table class= "tb" align="center">
     <tr>
       <td><%= f.label "first name" %></td>
-      <td><%= f.text_field :firstname, :class =>"form-control", :placeholder =>"first name" %></td>
+      <td><%= f.text_field :firstname, :required=>true, :class =>"form-control", :placeholder =>"first name"%></td>
       <td class="error"><%=@user.errors[:firstname].join(",") %></td>
       <td></td>
     </tr>
@@ -19,19 +19,19 @@
     <td></td>
     <tr>
       <td><%= f.label "last name" %></td>
-      <td><%= f.text_field :lastname, :class =>"form-control", :placeholder =>"last name"%></td>
+      <td><%= f.text_field :lastname, :required=>true,:class =>"form-control", :placeholder =>"last name"%></td>
       <td class="error"><%= @user.errors[:lastname].join(",")  %></td>
     </tr>
     <td></td>
     <tr>
       <td> <%= f.label "email id" %></td>
-      <td> <%= f.text_field :emailid, :class =>"form-control", :placeholder =>"email id"%></td>
+      <td> <%= f.text_field :emailid ,:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',:required=>true,:class =>"form-control", :placeholder =>"email id"%></td>
       <td class="error"> <%= @user.errors[:emailid].join(",")%></td>
     </tr>
     <td></td>
     <tr>
       <td><%= f.label "login id" %></td>
-      <td><%= f.text_field :loginid, :class =>"form-control", :placeholder =>"login id"%></td>
+      <td><%= f.text_field :loginid, :required=>true,:class =>"form-control", :placeholder =>"login id"%></td>
       <td class="error"> <%= @user.errors[:loginid].join(",")%></td>
     </tr>
     <td></td>
@@ -47,7 +47,7 @@
 <td></td>
 <tr>
     <td>  <%= f.label "employee id" %></td>
-    <td> <%= f.text_field :empid, :class =>"form-control", :placeholder =>"employee id"%></td>
+    <td> <%= f.text_field :empid, :required=>true,:class =>"form-control", :placeholder =>"employee id"%></td>
     <td class="error"> <%= @user.errors[:empid].join(",")%></td>
 </tr>
 <td></td>
@@ -78,28 +78,24 @@
 <td></td>
 <tr>
     <td><%= f.label "Education"%><br></td> 
-    <td> <%= f.text_area :education%></td>
+    <td> <%= f.text_area :education,:class =>"form-control",:placeholder =>"education"%></td>
 </tr>
 <td></td>
 <tr>
     <td><%= f.label "Comments"%></td> 
-    <td>  <%= f.text_area :comments%></td>
+    <td>  <%= f.text_area :comments,:class =>"form-control",:placeholder =>"comments"%></td>
 </tr>
 <td></td>
 <tr>
-    <td><%= f.label "Is account locked" %>&nbsp:</td> 
-    <td><%= f.select :locked, ["Locked","not locked"]%></td>
+    <td></td>
+    <td><%=f.radio_button :locked,'locked',:checked => true %>locked</td>
+    <td><%= f.radio_button :locked,'active'%>active</td>
 </tr>
-
-<tr>
-    <td><%= f.label "is account deactivated" %>&nbsp:</td> 
-    <td><%= f.select :deactivated, ["deactivated","activated"]%></td>
-</tr>
-<tr>
+<tr  class="deactivated">
     <td><%= f.label "Deactivated date"%></td>
     <td><%= f.date_select("deactivated_date", order: [ :month, :day, :year], :start_year => 1990, :end_year => 2020, selected: Date.today)%></td>
 </tr> 
-<tr>
+<tr class="deactivated">
     <td><%= f.label "reason" %>&nbsp:</td> 
     <td><%= f.select :reason, ["no longer employee with us","long medical leave","absconding"]%></td>
 </tr>
@@ -108,17 +104,13 @@
     <td><%= f.text_field :phone, :class =>"form-control", :placeholder =>"enter phone number"%></td>
     <td class="error"><%=@user.errors[:phone].join(",")%></td>
 </tr>
-
 <tr>
-   
-    <td> </td>
-
-    <td> <%= f.submit "Save" %></td>
+  <td></td>
+  <td><%= f.submit "create user" %></td>
+  <td><%= button_tag "Reset", type: :reset %></td>
+  <td><%= button_tag "Cancel", type: :cancel %></td>
 
 </tr>
-<td></td>
-
-
 
 <% end %>
 </table>

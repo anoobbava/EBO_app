@@ -7,10 +7,20 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :emailid
     	t.string :loginid
     	t.string :password
-
-    	t.string :empid
+      t.string :empid
     	t.date :dob
-    	t.timestamps null: false
+      t.string :gender
+      t.string  :education
+      t.string :comments
+      t.string :locked
+      t.string :reason
+      t.string  :phone
+      t.date :deactivated_date
+      t.string :timezone
+      t.string :designation
+      t.date :doj
+      t.timestamps null: false
     end
+    
   end
 end

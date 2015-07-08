@@ -15,22 +15,14 @@
 //= require turbolinks
 //= require_tree .
 
-// <script type="text/javascript">
-// function validateFunction()
-// {
-// var email = document.getElementById('user_emailid');
-//     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-//     if (!filter.test(email.value)) {
-//     alert('Please provide a valid email address');
-//     return false;
-//   }
-//   else
-//   {
-//     return true;
-//   }
-// }
-// </script>
+$(document).ready(function(){
+	 $(".deactivated").hide();
+    $("#user_locked_locked").click(function(){
+        $(".deactivated").hide();
+    });
 
-$(document).ready ->
-  alert "page has loaded1!"
+    $("#user_locked_active").click(function(){
+        $(".deactivated").show();
+    });
+});

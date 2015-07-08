@@ -1,5 +1,6 @@
 <h2 align="center">entered details are</h2>
- <table align="center" border="1" >
+
+ <table align="center" border="2">
 <tr>
     <td><%="firstname"%></td>
     <td><%= @user.firstname%></td>
@@ -49,7 +50,7 @@
 </tr>
 <td></td>
 <tr>
-    <td><%="date_of_joing"%></td>
+    <td><%="date of joing"%></td>
     <td> <%= @user.doj%></td>
 </tr>
 <td></td>
@@ -75,10 +76,6 @@
 <tr>
     <td><%="locked status"%></td> 
     <td>  <%=@user.locked%></td>
-</tr>
-<tr>
-    <td><%="deactivated status"%></td> 
-    <td>  <%=@user.deactivated%></td>
 </tr>
 <tr>
     <td><%="reason"%></td> 

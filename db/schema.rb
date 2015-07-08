@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706122410) do
+ActiveRecord::Schema.define(version: 20150702105007) do
 
   create_table "users", force: :cascade do |t|
     t.string   "firstname",        limit: 255
@@ -22,19 +22,18 @@ ActiveRecord::Schema.define(version: 20150706122410) do
     t.string   "password",         limit: 255
     t.string   "empid",            limit: 255
     t.date     "dob"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "timezone",         limit: 255
-    t.date     "doj"
-    t.string   "designation",      limit: 255
     t.string   "gender",           limit: 255
-    t.text     "education",        limit: 65535
-    t.text     "comments",         limit: 65535
+    t.string   "education",        limit: 255
+    t.string   "comments",         limit: 255
     t.string   "locked",           limit: 255
-    t.string   "deactivated",      limit: 255
     t.string   "reason",           limit: 255
     t.string   "phone",            limit: 255
     t.date     "deactivated_date"
+    t.string   "timezone",         limit: 255
+    t.string   "designation",      limit: 255
+    t.date     "doj"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end
