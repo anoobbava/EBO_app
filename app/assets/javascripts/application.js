@@ -16,13 +16,21 @@
 //= require_tree .
 
 
-$(document).ready(function(){
-	 $(".deactivated").hide();
+
+
+var ready;
+ready = function() {
+
+   $(".deactivated").hide();
     $("#user_locked_locked").click(function(){
-        $(".deactivated").hide();
+        $(".deactivated").show();
     });
 
     $("#user_locked_active").click(function(){
-        $(".deactivated").show();
+        $(".deactivated").hide();
     });
-});
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

@@ -1,0 +1,124 @@
+-- MySQL dump 10.13  Distrib 5.6.19, for debian-linux-gnu (i686)
+--
+-- Host: localhost    Database: user_details
+-- ------------------------------------------------------
+-- Server version	5.6.19-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `designations`
+--
+
+DROP TABLE IF EXISTS `designations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `designations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `designations`
+--
+
+LOCK TABLES `designations` WRITE;
+/*!40000 ALTER TABLE `designations` DISABLE KEYS */;
+INSERT INTO `designations` VALUES (1,'Trainee','2015-07-10 07:08:09','2015-07-10 07:08:09'),(2,'Trainer','2015-07-10 07:08:18','2015-07-10 07:08:18'),(3,'Manager','2015-07-10 07:08:33','2015-07-10 07:08:33'),(4,'Team Lead','2015-07-10 07:09:51','2015-07-10 07:09:51');
+/*!40000 ALTER TABLE `designations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20150702105007'),('20150708124634'),('20150709065415');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `middlename` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emailid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `loginid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `empid` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `education` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comments` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `locked` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reason` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `deactivated_date` date DEFAULT NULL,
+  `timezone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `doj` date DEFAULT NULL,
+  `designation_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `image_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_file_size` int(11) DEFAULT NULL,
+  `image_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_users_on_designation_id` (`designation_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (3,'albert','p','paul','albet@gmail.com','albert','123456','ST1122','1950-07-09','male','btech','cs','active','no longer employee with us','6507891236','2015-07-10','Pacific Time (US & Canada)','2015-07-10',2,'2015-07-09 10:42:24','2015-07-10 05:41:07','cool-under-the-world.jpg','image/jpeg',122427,'2015-07-09 10:42:24'),(5,'anoob','k','bava','anoob.bava@gmail.com','anoob_bava','123456','ST3292','1950-07-09','male','btech','cs','active','no longer employee with us','787-666-4560','2015-07-09','Pacific Time (US & Canada)','2015-07-09',3,'2015-07-09 13:57:24','2015-07-09 13:57:24','anoob.JPG','image/jpeg',1775393,'2015-07-09 13:57:23'),(8,'jurasic','k','world','jkw@gmail.com','jkw','123456','ST2222','1950-07-09','male','btech','cs',NULL,NULL,'1694561230',NULL,'Pacific Time (US & Canada)','2015-07-09',1,'2015-07-09 14:46:05','2015-07-09 14:46:05','Jurassic-World-The-Game.jpg','image/jpeg',542429,'2015-07-09 14:46:05'),(9,'manu','r','raju','manuraju@gmail.com','manu_raju','123456','ST5555','1993-09-10','male','btech','cusat','active','no longer employee with us','1567789103','2015-07-10','Bogota','2015-07-10',1,'2015-07-10 03:27:06','2015-07-10 03:27:06','little-cute-students-backgrounds-powerpoint.jpg','image/jpeg',546675,'2015-07-10 03:27:05'),(11,'ruby','k','rubian','ruby@gmail.com','ruby','123456','S1111','1950-07-10','male','btech','cs','active','no longer employee with us','1264567890','2015-07-10','Chihuahua','2015-07-10',1,'2015-07-10 08:56:53','2015-07-10 08:56:53','image001.jpg','image/jpeg',2640,'2015-07-10 08:56:53');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-07-10 14:34:31

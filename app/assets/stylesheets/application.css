@@ -39,10 +39,10 @@
   color: black;
   table-layout: center;
  }
- table.table_class_border{
-  
-
- }
+ 
+ .tb{
+  align:center;
+}
  	
  	<style type="text/css">
 
@@ -65,21 +65,12 @@
  # Or if using bootstrap v3:
  *= require bootstrap-datepicker3
 
-table.one {
-    border-style: solid;
-    border-color: red;
+table{
+
+    border: 1px solid black;
+    text-align: center;
+}
+td { 
+    padding: 5px;
 }
 
-
-.table_div{
-   width:920px;
-   padding:30px;
-   margin:40px auto;
-   background: #FFF;
-   border-radius: 10px;
-   -webkit-border-radius:10px;
-   -moz-border-radius: 10px;
-   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-   -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-}

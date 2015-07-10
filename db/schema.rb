@@ -11,29 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702105007) do
+ActiveRecord::Schema.define(version: 20150709065415) do
+
+  create_table "designations", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
-    t.string   "firstname",        limit: 255
-    t.string   "middlename",       limit: 255
-    t.string   "lastname",         limit: 255
-    t.string   "emailid",          limit: 255
-    t.string   "loginid",          limit: 255
-    t.string   "password",         limit: 255
-    t.string   "empid",            limit: 255
+    t.string   "firstname",              limit: 255
+    t.string   "middlename",             limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "emailid",                limit: 255
+    t.string   "loginid",                limit: 255
+    t.string   "password",               limit: 255
+    t.string   "empid",                  limit: 255
     t.date     "dob"
-    t.string   "gender",           limit: 255
-    t.string   "education",        limit: 255
-    t.string   "comments",         limit: 255
-    t.string   "locked",           limit: 255
-    t.string   "reason",           limit: 255
-    t.string   "phone",            limit: 255
+    t.string   "gender",                 limit: 255
+    t.string   "education",              limit: 255
+    t.string   "comments",               limit: 255
+    t.string   "locked",                 limit: 255
+    t.string   "reason",                 limit: 255
+    t.string   "phone",                  limit: 255
     t.date     "deactivated_date"
-    t.string   "timezone",         limit: 255
-    t.string   "designation",      limit: 255
+    t.string   "timezone",               limit: 255
     t.date     "doj"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "designation_id",         limit: 4
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "image_file_name",        limit: 255
+    t.string   "image_content_type",     limit: 255
+    t.integer  "image_file_size",        limit: 4
+    t.datetime "image_updated_at"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
+
+  add_index "users", ["designation_id"], name: "index_users_on_designation_id", using: :btree
 
 end

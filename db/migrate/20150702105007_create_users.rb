@@ -17,8 +17,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :phone
       t.date :deactivated_date
       t.string :timezone
-      t.string :designation
       t.date :doj
+      t.belongs_to :designation ,index:true
       t.timestamps null: false
     end
     

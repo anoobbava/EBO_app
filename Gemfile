@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 #paperclip for image upload:
 
 gem 'paperclip', '~> 4.3.0'
+gem 'rmagick', '~> 2.15.2'
+gem 'devise'
 
 
 gem 'bootstrap-datepicker-rails'
