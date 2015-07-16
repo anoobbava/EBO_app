@@ -1,4 +1,9 @@
-<%= form_for @user do |f| %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, :html => { :multipart => true },url: registration_path(resource_name)) do |f| %>
+  
+  <%= render "devise/shared/links"%>
+
   <div class="tb">
     <div class="form-group" >
       <table align="center">
@@ -12,8 +17,8 @@
           <td class="error"><%=@user.errors[:firstname].join(",") %></td>
           <td></td>
         </tr>
-          <td></td>
-          <tr>
+        <td></td>
+        <tr>
           <td><%= f.label "middlename" %></td>
           <td><%= f.text_field :middlename, :class =>"form-control", :placeholder =>"middle name" %></td>
         </tr>
@@ -34,7 +39,7 @@
           <td><%= f.label "login id" %></td>
           <td><%= f.text_field :loginid, :required=>true,:class =>"form-control", :placeholder =>"login id"%></td>
           <td class="error"> <%= @user.errors[:loginid].join(",")%></td>
-          </tr>
+        </tr>
           <td></td>
         <tr>
           <td>  <%= f.label "password" %></td>
@@ -45,28 +50,28 @@
           <td>  <%= f.label "confirm password"%></td>
           <td> <%= f.password_field :password_confirmation, :class =>"form-control", :placeholder =>"confirm password"%></td>
         </tr>
-        <td></td>
+          <td></td>
         <tr>
-          <td>  <%= f.label "employee id" %></td>
+          <td><%= f.label "employee id" %></td>
           <td> <%= f.text_field :empid, :required=>true,:class =>"form-control", :placeholder =>"employee id"%></td>
           <td class="error"> <%= @user.errors[:empid].join(",")%></td>
         </tr>
           <td></td>
         <tr>
-          <td><%= f.label "Date of birth"%></td>
+          <td>   <%= f.label "Date of birth"%></td>
           <td> <%=f.date_select :dob, order: [ :month, :day, :year],:start_year => 1950, :end_year => 1995%></td>
         </tr>
           <td></td>
         <tr>
           <td><%=f.label "Time Zone"%></td>
-          <td><%=f.time_zone_select("timezone", nil, default: "Pacific Time (US & Canada)", include_blank: false)%></td>
+          <td> <%=f.time_zone_select("timezone", nil, default: "Pacific Time (US & Canada)", include_blank: false)%></td>
         </tr>
-        <td></td>
+          <td></td>
         <tr>
           <td><%= f.label "Date Of Joing"%></td>
           <td> <%= f.date_select("doj", order: [ :month, :day, :year], :start_year => 1990, :end_year => 2020, selected: Date.today)%></td>
         </tr> 
-        <td></td>
+          <td></td>
         <tr>
           <td><%= f.label "Gender" %></td>
           <td> <%= f.select :gender, ["male","female","others"]%></td>
@@ -74,7 +79,7 @@
           <td></td>
         <tr>
           <td><%= f.label "designation" %></td> 
-          <td> <%= f.select(:designation_id ,@designations) %></td>
+          <td> <%= f.select(:designation_id ,@designations=Designation.all.map{|d|[d.name,d.id]}) %></td>
         </tr>
           <td></td>
         <tr>
@@ -84,9 +89,21 @@
           <td></td>
         <tr>
           <td><%= f.label "Comments"%></td> 
-          <td><%= f.text_area :comments,:class =>"form-control",:placeholder =>"comments"%></td>
+          <td>  <%= f.text_area :comments,:class =>"form-control",:placeholder =>"comments"%></td>
         </tr>
           <td></td>
+        <tr>
+          <td></td>
+          <td><%=f.radio_button :locked,'locked' %>locked</td>
+          <td><%= f.radio_button :locked,'active',:checked => true %>active</td>
+        </tr>
+        <tr  class="deactivated">
+          <td><%= f.label "Deactivated date"%></td>
+          <td><%= f.date_select("deactivated_date", order: [ :month, :day, :year], :start_year => 1990, :end_year => 2020, selected: Date.today)%></td>
+        </tr> 
+        <tr class="deactivated">
+          <td><%= f.label "reason" %>&nbsp:</td> 
+          <td><%= f.select :reason, ["no longer employee with us","long medical leave","absconding"]%></td>
         </tr>
         <tr>
           <td><%= f.label "work phone" %>&nbsp:</td> 
@@ -97,9 +114,13 @@
           <td></td>
           <td><%= f.submit "create user" %></td>
           <td><%= button_tag "Reset", type: :reset %></td>
-          <td><%=link_to "home page",users_path%></td>
+          <td><%= button_tag "Cancel", type: :cancel %></td>
         </tr>
       <% end %>
     </table>
   </div>
 </div>
+
+
+
+

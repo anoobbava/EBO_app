@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
-
+  before_action :authenticate_user!
+  
 	def index
 		@users=User.all
 	end	
@@ -22,6 +23,8 @@ class Admin::UsersController < ApplicationController
 	 if @user.save
 		  redirect_to admin_users_path(@user)
 	 else
+        designation_list
+
 		  render :new
 	 end
   end
@@ -48,6 +51,6 @@ class Admin::UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:firstname, :designation_id ,:middlename, :lastname, :emailid, :loginid, :password, :password_confirmation, :empid, :dob, :timezone, :doj,  :gender, :education, :comments, :locked, :deactivated, :reason, :phone, :image, :deactivated_date)
+      params.require(:user).permit(:firstname, :designation_id ,:middlename, :lastname, :email, :loginid, :password, :password_confirmation, :empid, :dob, :timezone, :doj,  :gender, :education, :comments, :locked, :deactivated, :reason, :phone, :image, :deactivated_date)
     end
 end

@@ -1,5 +1,8 @@
-<%= form_for @user do |f| %>
-  <div class="tb">
+<h2 align="center">Edit in devise <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+   <!--<%= devise_error_messages! %>-->
+ <div class="tb">
     <div class="form-group" >
       <table align="center">
         <tr>
@@ -12,8 +15,8 @@
           <td class="error"><%=@user.errors[:firstname].join(",") %></td>
           <td></td>
         </tr>
-          <td></td>
-          <tr>
+        <td></td>
+        <tr>
           <td><%= f.label "middlename" %></td>
           <td><%= f.text_field :middlename, :class =>"form-control", :placeholder =>"middle name" %></td>
         </tr>
@@ -34,10 +37,15 @@
           <td><%= f.label "login id" %></td>
           <td><%= f.text_field :loginid, :required=>true,:class =>"form-control", :placeholder =>"login id"%></td>
           <td class="error"> <%= @user.errors[:loginid].join(",")%></td>
-          </tr>
+        </tr>
           <td></td>
+          <tr>
+          <td>  <%= f.label "current password" %></td>
+          <td> <%= f.password_field :current_password, :class =>"form-control", :placeholder =>"current password"%></td>
+          <td class="error"> <%= @user.errors[:current_password].join(",")%></td>
+        </tr>
         <tr>
-          <td>  <%= f.label "password" %></td>
+          <td>  <%= f.label "new password" %></td>
           <td> <%= f.password_field :password, :class =>"form-control", :placeholder =>"password"%></td>
           <td class="error"> <%= @user.errors[:password_confirmation].join(",")%></td>
         </tr>
@@ -45,28 +53,29 @@
           <td>  <%= f.label "confirm password"%></td>
           <td> <%= f.password_field :password_confirmation, :class =>"form-control", :placeholder =>"confirm password"%></td>
         </tr>
-        <td></td>
+
+          <td></td>
         <tr>
-          <td>  <%= f.label "employee id" %></td>
+          <td><%= f.label "employee id" %></td>
           <td> <%= f.text_field :empid, :required=>true,:class =>"form-control", :placeholder =>"employee id"%></td>
           <td class="error"> <%= @user.errors[:empid].join(",")%></td>
         </tr>
           <td></td>
         <tr>
-          <td><%= f.label "Date of birth"%></td>
+          <td>   <%= f.label "Date of birth"%></td>
           <td> <%=f.date_select :dob, order: [ :month, :day, :year],:start_year => 1950, :end_year => 1995%></td>
         </tr>
           <td></td>
         <tr>
           <td><%=f.label "Time Zone"%></td>
-          <td><%=f.time_zone_select("timezone", nil, default: "Pacific Time (US & Canada)", include_blank: false)%></td>
+          <td> <%=f.time_zone_select("timezone", nil, default: "Pacific Time (US & Canada)", include_blank: false)%></td>
         </tr>
-        <td></td>
+          <td></td>
         <tr>
           <td><%= f.label "Date Of Joing"%></td>
           <td> <%= f.date_select("doj", order: [ :month, :day, :year], :start_year => 1990, :end_year => 2020, selected: Date.today)%></td>
         </tr> 
-        <td></td>
+          <td></td>
         <tr>
           <td><%= f.label "Gender" %></td>
           <td> <%= f.select :gender, ["male","female","others"]%></td>
@@ -74,7 +83,7 @@
           <td></td>
         <tr>
           <td><%= f.label "designation" %></td> 
-          <td> <%= f.select(:designation_id ,@designations) %></td>
+          <td> <%= f.select(:designation_id ,@designations=Designation.all.map{|d|[d.name,d.id]}) %></td>
         </tr>
           <td></td>
         <tr>
@@ -84,22 +93,24 @@
           <td></td>
         <tr>
           <td><%= f.label "Comments"%></td> 
-          <td><%= f.text_area :comments,:class =>"form-control",:placeholder =>"comments"%></td>
+          <td>  <%= f.text_area :comments,:class =>"form-control",:placeholder =>"comments"%></td>
         </tr>
           <td></td>
-        </tr>
         <tr>
           <td><%= f.label "work phone" %>&nbsp:</td> 
           <td><%= f.text_field :phone, :class =>"form-control", :placeholder =>"enter phone number"%></td>
           <td class="error"><%=@user.errors[:phone].join(",")%></td>
         </tr>
         <tr>
-          <td></td>
-          <td><%= f.submit "create user" %></td>
-          <td><%= button_tag "Reset", type: :reset %></td>
-          <td><%=link_to "home page",users_path%></td>
+          <div class="actions">
+            <td><%= f.submit "Update" %></td>
+          </div>
         </tr>
-      <% end %>
-    </table>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>
+
+
+
+

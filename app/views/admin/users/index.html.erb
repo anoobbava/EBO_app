@@ -1,3 +1,5 @@
+
+
 <h2 align="center">welcome to admin page to create user</h2>
 <table class="table table-striped">
   <thead>
@@ -22,7 +24,7 @@
         <td><%=image_tag user.image.url(:thumb)%></td>        
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
-        <td><%= user.emailid%></td>
+        <td><%= user.email%></td>
         <td><%=user.empid%></td>
         <td><%= user.loginid %></td>
         
@@ -32,7 +34,7 @@
         <td><%= user.designation.try(:name) %></td>
         
         <td>
-        <td><%= button_to "edit", edit_admin_user_path(user) ,:method => "get" %></td>
+        <td><%= button_to "edit", edit_user_registration_path(user) ,:method => "get" %></td>
         <td><%= button_to "show", admin_user_path(user),:method => "get" %></td>
       <td> <%= button_to'delete',admin_user_path(user),:confirm => 'Are you sure?', :method => :delete %></td>
           
@@ -45,3 +47,4 @@
     
 </table>
 
+    

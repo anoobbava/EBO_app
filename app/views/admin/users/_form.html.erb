@@ -6,6 +6,7 @@
           <td><%= f.label :image, "browse photo",:class =>"form-control" %></td>
           <td><%=f.file_field :image %></td>
         </tr>
+        
         <tr>
           <td><%= f.label "first name" %></td>
           <td><%= f.text_field :firstname, :required=>true, :class =>"form-control", :placeholder =>"first name"%></td>
@@ -26,8 +27,8 @@
           <td></td>
         <tr>
           <td> <%= f.label "email id" %></td>
-          <td> <%= f.text_field :emailid ,:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',:required=>true,:class =>"form-control", :placeholder =>"email id"%></td>
-          <td class="error"> <%= @user.errors[:emailid].join(",")%></td>
+          <td> <%= f.text_field :email ,:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',:required=>true,:class =>"form-control", :placeholder =>"email id"%></td>
+          <td class="error"> <%= @user.errors[:email].join(",")%></td>
         </tr>
           <td></td>
         <tr>
@@ -112,6 +113,7 @@
           <td><%= button_tag "Cancel", type: :cancel %></td>
         </tr>
       <% end %>
+      
     </table>
   </div>
 </div>

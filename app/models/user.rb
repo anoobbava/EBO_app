@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   
   	belongs_to :designation	
 
@@ -7,9 +11,9 @@ class User < ActiveRecord::Base
 									message: "only allow letters" }
 	validates :lastname, presence: true ,format:{ with: /\A[a-zA-Z]+\z/,
 									message: "only allow letters" }
-	validates :emailid,presence: true,uniqueness: true
-	validates :password, confirmation: true
-	validates :password_confirmation, presence: true			
+	# validates :emailid,presence: true,uniqueness: true
+	# validates :password, confirmation: true
+	# validates :password_confirmation, presence: true			
 	validates :loginid, presence: true ,uniqueness: true ,format:{ with: /\A[a-z0-9\-_]+\z/,
 							message: "only allow letters,numbers,underscore and hyphen" }
 	validates :empid, presence: true
